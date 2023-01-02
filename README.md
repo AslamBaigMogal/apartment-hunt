@@ -1,28 +1,20 @@
-This code defines a function apartmentHunting that takes in two arguments: an array of "blocks" and an array of "reqs".
+This code appears to be implementing a function apartmentHunting, which takes in two arguments: blocks and reqs. The blocks argument is an array of blocks in an apartment complex, 
+and reqs is an array of requirements that the function should consider when determining which block is the best to live in.
 
-The apartmentHunting function first calls another function getMinDistance on each item in the reqs array and passes in the blocks array as well.
- It stores the returned array of minimum distances in a variable minDistanceToReqs.
+The apartmentHunting function first calls another function getMinDistance, which takes in a requirement item and the blocks array as arguments. This function returns an array result that
+ represents the minimum distance from each block to the nearest requirement item.
 
-Then it calls a function getMaxDistanceToAllReq and passes in minDistanceToReqs, reqs, and blocks as arguments. 
-It stores the returned array of maximum distances in a variable maxDistanceToAllReq.
+The getMinDistance function then loops through the blocks array twice: once forwards, and once backwards. For each block, it checks if the block has the requirement item and if so, 
+it updates the current closest block with the index of the current block. It then sets the value at the current index in the result array to be the absolute difference between the 
+current closest block and the current block.
 
-Finally, the apartmentHunting function returns the index of the minimum element in maxDistanceToAllReq.
+The getMinDistance function then returns the result array.
 
-The getMinDistance function takes in an "item" (a string representing a requirement) and the "blocks" (an array of objects representing apartment buildings). 
-It initializes an array result with the same length as blocks and fills it with infinity. It also initializes a variable currentClosest to infinity.
+The apartmentHunting function then calls another function getMaxDistanceToAllReq, which takes in the nestedArr (the array returned from getMinDistance), reqs, and blocks as arguments.
+ This function returns an array maxDistance that represents the maximum distance from each block to all the requirements in the reqs array.
 
-It then iterates through the blocks, and for each block, it checks if the block has the current requirement (item). 
-If it does, it updates currentClosest to the current index. It then updates the corresponding element in result to the absolute difference between currentClosest and the current index.
+The getMaxDistanceToAllReq function loops through the blocks array and for each block, it calculates the maximum distance to all requirements by looping through the nestedArr array and 
+finding the maximum value in the subarray at the current index of the outer loop. It then sets the value at the current index in the maxDistance array to be this maximum distance.
 
-After the loop, it iterates through the blocks in reverse order and repeats the process, updating currentClosest and result as before. Finally, it returns result.
-
-The getMaxDistanceToAllReq function takes in a "nested array" of minimum distances to requirements, the requirements, and the blocks. 
-It initializes an array maxDistance with the same length as blocks.
-
-It then iterates through the blocks and for each block, it initializes a variable currMaxDistance to negative infinity. 
-It then iterates through the nested array of minimum distances and updates currMaxDistance to the maximum of currMaxDistance and the corresponding element in the nested array.
-
-After the inner loop, it updates the corresponding element in maxDistance with currMaxDistance. Finally, it returns maxDistance.
-
-
-
+Finally, the apartmentHunting function returns the index of the minimum value in the maxDistance array, which represents the index of the block that is the best to live in based on the 
+requirements.
