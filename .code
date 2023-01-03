@@ -1,7 +1,7 @@
 
 function apartmentHunting(blocks, reqs) {
     let minDistanceToReqs = reqs.map((item) => getMinDistance(item,blocks))
-    // console.log(minDistanceToReqs)
+    
     let maxDistanceToAllReq = getMaxDistanceToAllReq(minDistanceToReqs, reqs, blocks)
     return maxDistanceToAllReq.indexOf(Math.min(...maxDistanceToAllReq))
   }
